@@ -12,6 +12,6 @@
         <part Name="Physics" Weight="3"/>
         <part Name="Armor" WornOn="*" DV="0" AV="0"/>
         <part Name="CurableFungalInfection"/>
-        <!--<part Name="helado_MikuInfection"/>-->
+        <part Name="helado_MikuInfection"/>
     </object>
 </objects>
