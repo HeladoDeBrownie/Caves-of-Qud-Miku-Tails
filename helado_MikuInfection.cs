@@ -5,6 +5,8 @@ namespace XRL.World.Parts
 {
     public class helado_MikuInfection : IPart
     {
+        public int AttackChance = 15;
+
         public GameObject GetTarget()
         {
             var possibleTargets = new List<GameObject>();
@@ -31,11 +33,14 @@ namespace XRL.World.Parts
             switch (E.ID)
             {
                 case "EndTurn":
-                    var target = GetTarget();
-
-                    if (target != null)
+                    if (Stat.Chance(AttackChance))
                     {
-                        AddPlayerMessage("TODO: attack " + target.DisplayName);
+                        var target = GetTarget();
+
+                        if (target != null)
+                        {
+                            AddPlayerMessage("TODO: attack " + target.DisplayName);
+                        }
                     }
 
                     return true;
