@@ -39,7 +39,13 @@ namespace XRL.World.Parts
 
                         if (target != null)
                         {
-                            AddPlayerMessage("TODO: attack " + target.DisplayName);
+                            var equipee = ParentObject.Equipped;
+
+                            target.FireEvent(Event.New("TakeDamage",
+                                "Damage", new Damage(6),
+                                "Owner", equipee,
+                                "Attacker", equipee,
+                                "Message", "from %o miku tails!"));
                         }
                     }
 
