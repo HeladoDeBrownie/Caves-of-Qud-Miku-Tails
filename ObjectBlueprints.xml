@@ -1,4 +1,10 @@
 <objects>
+    <object Name="helado_Miku Puffer" Inherits="FungusPuffer">
+        <part Name="Render" Tile="Creatures/sw_mushroom.bmp" RenderIfDark="true" DisplayName="&amp;cbrooding cyanpuff" RenderString="231" ColorString="&amp;c" DetailColor="M"/>
+        <mutation Name="SporePuffer" PuffObject="helado_Miku Spores"/>
+        <part Name="Description" Short="TODO"/>
+    </object>
+
     <object Name="helado_Miku Spores" Inherits="Gas">
         <part Name="Render" DisplayName="fungal spores"/>
         <part Name="GasFungalSpores" Infection="helado_Miku Infection"/>
