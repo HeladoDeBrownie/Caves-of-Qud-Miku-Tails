@@ -41,6 +41,7 @@ namespace XRL.World.Parts
                         if (target != null)
                         {
                             var equipee = ParentObject.Equipped;
+                            target.ParticleBlip("&c~");
 
                             target.FireEvent(Event.New("TakeDamage",
                                 "Damage", new Damage(new DieRoll(DamageRoll).Resolve()),
