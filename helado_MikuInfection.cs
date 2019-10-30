@@ -5,13 +5,15 @@ namespace XRL.World.Parts
 {
     public class helado_MikuInfection : IPart
     {
-        public int AttackChance = 5;
-        public string DamageRoll = "2d6";
+        public int AttackChance = 5;        // chance each turn of trying to attack an adjacent creature, expressed as a percentage
+        public string BaseDamage = "2d6";   // damage inflicted on the attacked creature, expressed as a dice string
 
+        // Try to pick a random local, adjacent, grounded, cophased target. If there are none, return null.
         public GameObject GetTarget()
         {
             var possibleTargets = new List<GameObject>();
 
+            // Accumulate a list of up to one valid melee target per adjacent local cell.
             ParentObject.GetCurrentCell().ForeachLocalAdjacentCell(delegate (Cell Cell)
             {
                 var combatTarget = Cell.GetCombatTarget(ParentObject);
@@ -29,26 +31,36 @@ namespace XRL.World.Parts
                 possibleTargets[Stat.Rnd.Next(0, count)];
         }
 
+        // Attack the given target, running an animation and inflicting damage.
+        // This method doesn't check the target for validity as per GetTarget's specification. It attacks them regardless.
+        // It *does* check whether the target is an object. If it isn't, it does nothing.
+        public void AttackTarget(GameObject Target)
+        {
+            if (Target != null)
+            {
+                var equipee = ParentObject.Equipped;
+
+                // Briefly show a cyan ~ at the target's cell, representing the tails whipping out.
+                Target.ParticleBlip("&c~");
+
+                // Deal direct damage without rolling an attack.
+                Target.FireEvent(Event.New("TakeDamage",
+                    "Damage", new Damage(new DieRoll(BaseDamage).Resolve()),
+                    "Owner", equipee,
+                    "Attacker", equipee,    // Blame our host for the attack.
+                    "Message", "from %o miku tails!"));
+            }
+        }
+
         public override bool FireEvent(Event E)
         {
             switch (E.ID)
             {
                 case "EndTurn":
+                    // Each turn, there is a chance the tails will lash out at a selected target.
                     if (Stat.Chance(AttackChance))
                     {
-                        var target = GetTarget();
-
-                        if (target != null)
-                        {
-                            var equipee = ParentObject.Equipped;
-                            target.ParticleBlip("&c~");
-
-                            target.FireEvent(Event.New("TakeDamage",
-                                "Damage", new Damage(new DieRoll(DamageRoll).Resolve()),
-                                "Owner", equipee,
-                                "Attacker", equipee,
-                                "Message", "from %o miku tails!"));
-                        }
+                        AttackTarget(GetTarget());
                     }
 
                     return true;
