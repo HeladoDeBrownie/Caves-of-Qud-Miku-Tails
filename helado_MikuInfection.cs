@@ -6,6 +6,7 @@ namespace XRL.World.Parts
     public class helado_MikuInfection : IPart
     {
         public int AttackChance = 15;
+        public string DamageRoll = "1d6";
 
         public GameObject GetTarget()
         {
@@ -42,7 +43,7 @@ namespace XRL.World.Parts
                             var equipee = ParentObject.Equipped;
 
                             target.FireEvent(Event.New("TakeDamage",
-                                "Damage", new Damage(6),
+                                "Damage", new Damage(new DieRoll(DamageRoll).Resolve()),
                                 "Owner", equipee,
                                 "Attacker", equipee,
                                 "Message", "from %o miku tails!"));
