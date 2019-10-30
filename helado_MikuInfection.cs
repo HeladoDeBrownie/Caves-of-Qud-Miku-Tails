@@ -5,8 +5,8 @@ namespace XRL.World.Parts
 {
     public class helado_MikuInfection : IPart
     {
-        public int AttackChance = 15;
-        public string DamageRoll = "1d6";
+        public int AttackChance = 5;
+        public string DamageRoll = "2d6";
 
         public GameObject GetTarget()
         {
