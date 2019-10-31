@@ -5,6 +5,14 @@ namespace XRL.World.Parts
 {
     public class helado_MikuInfection : IPart
     {
+        public static List<string> Sounds = new List<string>
+        {
+            "Miku1",
+            "Miku2",
+            "Miku3",
+            "Miku4",
+        };
+
         public int AttackChance = 5;        // chance each turn of trying to attack an adjacent creature, expressed as a percentage
         public string BaseDamage = "2d6";   // damage inflicted on the attacked creature, expressed as a dice string
 
@@ -38,6 +46,8 @@ namespace XRL.World.Parts
 
                 // Briefly show a cyan ~ at the target's cell, representing the tails whipping out.
                 Target.ParticleBlip("&c~");
+
+                PlayUISound(Sounds.GetRandomElement(null));
 
                 // Deal direct damage without rolling an attack.
                 Target.FireEvent(Event.New("TakeDamage",
