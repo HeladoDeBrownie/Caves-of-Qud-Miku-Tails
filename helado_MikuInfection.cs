@@ -24,11 +24,7 @@ namespace XRL.World.Parts
                 }
             });
 
-            var count = possibleTargets.Count;
-
-            return count == 0 ?
-                null :
-                possibleTargets[Stat.Rnd.Next(0, count)];
+            return possibleTargets.GetRandomElement(null);
         }
 
         // Attack the given target, running an animation and inflicting damage.
