@@ -13,15 +13,15 @@ namespace XRL.World.Parts
             "Miku4",
         };
 
-        public int AttackChance = 5;        // chance each turn of trying to attack an adjacent creature, expressed as a percentage
-        public string BaseDamage = "2d6";   // damage inflicted on the attacked creature, expressed as a dice string
+        public int AttackChance = 5; // chance each turn of lashing out, expressed as a percentage
+        public string BaseDamage = "2d6"; // damage inflicted on the attacked creature, expressed as a dice string
 
         // Try to pick a random local, adjacent, grounded, cophased target. If there are none, return null.
         public GameObject GetTarget()
         {
             var possibleTargets = new List<GameObject>();
 
-            // Accumulate a list of up to one valid melee target per adjacent local cell.
+            // Accumulate a list of up to one valid melee target per local, adjacent cell.
             ParentObject.GetCurrentCell().ForeachLocalAdjacentCell(delegate (Cell Cell)
             {
                 var combatTarget = Cell.GetCombatTarget(ParentObject);
@@ -47,6 +47,7 @@ namespace XRL.World.Parts
                 // Briefly show a cyan ~ at the target's cell, representing the tails whipping out.
                 Target.ParticleBlip("&c~");
 
+                // Play a random one of the voice clips.
                 PlayWorldSound(Sounds.GetRandomElement(null));
 
                 // Deal direct damage without rolling an attack.
@@ -62,8 +63,8 @@ namespace XRL.World.Parts
         {
             switch (E.ID)
             {
+                // Each turn, there is a chance the tails will lash out at a target.
                 case "EndTurn":
-                    // Each turn, there is a chance the tails will lash out at a selected target.
                     if (Stat.Chance(AttackChance))
                     {
                         AttackTarget(GetTarget());
