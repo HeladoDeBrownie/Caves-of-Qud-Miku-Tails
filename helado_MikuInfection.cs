@@ -47,7 +47,7 @@ namespace XRL.World.Parts
                 // Briefly show a cyan ~ at the target's cell, representing the tails whipping out.
                 Target.ParticleBlip("&c~");
 
-                PlayUISound(Sounds.GetRandomElement(null));
+                PlayWorldSound(Sounds.GetRandomElement(null));
 
                 // Deal direct damage without rolling an attack.
                 Target.FireEvent(Event.New("TakeDamage",
