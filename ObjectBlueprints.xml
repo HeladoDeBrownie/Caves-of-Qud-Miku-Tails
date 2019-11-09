@@ -20,4 +20,9 @@
         <part Name="CurableFungalInfection"/>
         <part Name="helado_MikuInfection"/>
     </object>
+
+    <object Name="helado_Miku Tails Initializer">
+        <part Name="helado_MikuTailsInitializer"/>
+        <tag Name="BaseObject"/>
+    </object>
 </objects>

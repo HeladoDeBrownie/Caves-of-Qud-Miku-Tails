@@ -1,0 +1,5 @@
+<encountertables>
+    <encountertable Name="FungalAnimals" Load="Merge">
+        <object Chance="75" Number="1d2" Blueprint="helado_Miku Puffer"/>
+    </encountertable>
+</encountertables>
