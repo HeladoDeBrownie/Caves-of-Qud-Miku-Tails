@@ -13,12 +13,13 @@
     </object>
 
     <object Name="helado_Miku Infection" Inherits="FungalInfection">
-        <part Name="Render" DisplayName="&amp;cmiku tails" Tile="helado_miku-tails.png" ColorString="&amp;c" DetailColor="Y"/>
+        <part Name="Render" DisplayName="&amp;cmiku tails" Tile="helado_miku-tails-1.png" ColorString="&amp;C" DetailColor="c"/>
         <part Name="Description" Short="The soft, celestial tones emitted by these rope-like fungal growths cannot quite be said to be vocal in nature, merely vocaloid."/>
         <part Name="Physics" Weight="3"/>
         <part Name="Armor" WornOn="*" DV="0" AV="0"/>
         <part Name="CurableFungalInfection"/>
         <part Name="helado_MikuInfection"/>
+        <part Name="helado_RandomTile" Choices="helado_miku-tails-1.png,helado_miku-tails-2.png,helado_miku-tails-3.png,helado_miku-tails-4.png"/>
     </object>
 
     <object Name="helado_Miku Tails Initializer">
