@@ -1,0 +1,8 @@
+- Brooding cyanpuffs spawn in most places where other puffers do.
+- Unlike other puffers, brooding cyanpuffs always bestow the same fungal infection, miku tails.
+- Miku tails will occasionally lash out at creatures within melee reach.
+- You will be blamed for your tails' attacks.
+- The tails' attack bypasses DV and AV, but not phase or flight, and cannot penetrate multiple times.
+- Each miku tails infection can attack independently, even multiple on the same turn.
+- If you enable overlay inventory in the options, you can see a pretty tile for your tails in your equip slot.
+- The tile of each miku tails infection is chosen randomly from four possible tiles.
