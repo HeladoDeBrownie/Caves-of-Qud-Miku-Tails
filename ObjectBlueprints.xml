@@ -2,7 +2,7 @@
     <object Name="helado_Miku Puffer" Inherits="FungusPuffer">
         <part Name="Render" Tile="Creatures/sw_mushroom.bmp" RenderIfDark="true" DisplayName="&amp;cbrooding cyanpuff" RenderString="231" ColorString="&amp;c" DetailColor="M"/>
         <mutation Name="SporePuffer" PuffObject="helado_Miku Spores"/>
-        <part Name="Description" Short="TODO"/>
+        <part Name="Description" Short="Melodic gills tense and release, tense and release, tense and release, as if drawing breath into the puffer's stem. With each exhalation it belches a cloud of cyan spores like motes of music. They flutter back to the cap and congeal into a cyan plasma."/>
     </object>
 
     <object Name="helado_Miku Spores" Inherits="Gas">
